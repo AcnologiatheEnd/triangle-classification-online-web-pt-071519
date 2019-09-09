@@ -8,19 +8,15 @@ class Triangle
     @s3 = s3
   end
   
-  def kind 
-  validate_triangle
-  else
-    if ((s1 == s2) && (s1 == s3) && (s2 == s3))
-      return :equilateral
-    elsif ((s1 == s2) || (s1 == s3) || (s2 == s3))
-      return :isosceles
-    elsif ((s1 != s2) && (s1 != s3) && (s2 != s3))
-      return :scalene
+  def kind
+    validate_triangle
+    if a == b && b == c
+      :equilateral
+    elsif a == b || b == c || a == c
+      :isosceles
     else
-      raise TriangleError
+      :scalene
     end
-  end
   end
   def validate_triangle
     real_triangle = [(a + b > c), (a + c > b), (b + c > a)]
